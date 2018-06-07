@@ -120,7 +120,9 @@ function toPromise(obj) {
   if ('function' == typeof obj) return thunkToPromise.call(this, obj);
   if (Array.isArray(obj)) return arrayToPromise.call(this, obj);
   if (isObject(obj)) return objectToPromise.call(this, obj);
-  return obj;
+
+  //primitive value
+  return Promise.resolve(obj);
 }
 
 /**
